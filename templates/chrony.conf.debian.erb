@@ -101,14 +101,17 @@ refclock <%= refclock %>
 lock_all
 <% end -%>
 
-<% if defined?(@leapsecmode) -%>
+# https://chrony.tuxfamily.org/doc/3.4/chrony.conf.html#leapsecmode
+<% if defined?(@leapsecmode) %>
 leapsecmode <%= @leapsecmode %>
 <% end -%>
 
-<% if defined?(@maxslewrate) -%>
+# https://chrony.tuxfamily.org/doc/3.4/chrony.conf.html#maxslewrate
+<% if defined?(@maxslewrate) %>
 maxslewrate <%= @maxslewrate %>
 <% end -%>
 
-<% if defined?(@smoothtime) -%>
+# https://chrony.tuxfamily.org/doc/3.4/chrony.conf.html#smoothtime
+<% if defined?(@smoothtime) %>
 smoothtime <%= @smoothtime %>
 <% end -%>
