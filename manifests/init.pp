@@ -37,8 +37,7 @@ $service_manage                                                     = $chrony::p
 $service_name                                                       = $chrony::params::service_name,
 Optional[String] $smoothtime                                        = $chrony::params::smoothtime,
 Optional[Enum['system', 'step', 'slew', 'ignore']] $leapsecmode     = $chrony::params::leapsecmode,
-Optional[Float] $maxslewrate                         = $chrony::params::maxslewrate,
-
+Optional[Float] $maxslewrate                                        = $chrony::params::maxslewrate,
 
 ) inherits chrony::params {
 
