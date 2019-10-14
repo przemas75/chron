@@ -84,7 +84,7 @@ describe 'chrony' do
             bindcmdaddress: ['10.0.0.1'],
             cmdacl: ['cmdallow 1.2.3.4', 'cmddeny 1.2.3', 'cmdallow all 1.2'],
             leapsecmode: 'slew',
-            maxslewrate: 1000,
+            maxslewrate: 1000.00,
             smoothtime: '400 0.001',
           }
         end
