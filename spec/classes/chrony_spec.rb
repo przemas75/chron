@@ -135,7 +135,7 @@ describe 'chrony' do
               it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
               if facts[:operatingsystemmajrelease] > '8'
                 it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*leapsecmode slew$}) }
-                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*maxslewrate 1000$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*maxslewrate 1000\.00$}) }
                 it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*smoothtime 400 0\.001 leaponly$}) }
               end
             end
