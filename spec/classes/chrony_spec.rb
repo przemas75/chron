@@ -133,7 +133,6 @@ describe 'chrony' do
               it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_group('mrt') }
               it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_replace(true) }
               it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
-
             end
           end
         end
