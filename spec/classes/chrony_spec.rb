@@ -84,7 +84,7 @@ describe 'chrony' do
             bindcmdaddress: ['10.0.0.1'],
             cmdacl: ['cmdallow 1.2.3.4', 'cmddeny 1.2.3', 'cmdallow all 1.2'],
             leapsecmode: 'slew',
-            maxslewrate: 1000.00,
+            maxslewrate: 1000.0,
             smoothtime: '400 0.001 leaponly',
           }
         end
@@ -135,7 +135,7 @@ describe 'chrony' do
               it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
               if facts[:operatingsystemmajrelease] > '8'
                 it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*leapsecmode slew$}) }
-                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*maxslewrate 1000\.00$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*maxslewrate 1000\.0$}) }
                 it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*smoothtime 400 0\.001 leaponly$}) }
               end
             end
