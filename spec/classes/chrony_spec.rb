@@ -252,4 +252,3 @@ describe 'chrony' do
       end
     end
   end
-end
