@@ -1,6 +1,6 @@
 require 'spec_helper_acceptance'
 
-describe 'chrony' do
+describe 'chrony class:' do
   it 'with defaults' do
     pp = <<-MANIFEST
       class { 'chrony': }
