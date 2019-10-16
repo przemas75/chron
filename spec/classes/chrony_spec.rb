@@ -83,6 +83,9 @@ describe 'chrony' do
             chrony_password: 'sunny',
             bindcmdaddress: ['10.0.0.1'],
             cmdacl: ['cmdallow 1.2.3.4', 'cmddeny 1.2.3', 'cmdallow all 1.2'],
+            leapsecmode: 'slew',
+            maxslewrate: 1000.0,
+            smoothtime: '400 0.001 leaponly',
           }
         end
 
