@@ -4,9 +4,9 @@
   "author": "aboe",
   "summary": "Manage chrony daemon on Linux",
   "license": "Apache-2.0",
-  "source": "git://github.com/aboe76/puppet-chrony.git",
-  "project_page": "https://github.com/aboe76/puppet-chrony",
-  "issues_url": "https://github.com/aboe76/puppet-chrony/issues",
+  "source": "git://github.com/przemas75/chron.git",
+  "project_page": "https://github.com/przemas75/chron",
+  "issues_url": "https://github.com/przemas75/chron/issues",
   "dependencies": [
 
   ],
