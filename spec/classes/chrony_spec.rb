@@ -10,10 +10,13 @@ describe 'chrony' do
       context 'with defaults' do
         it { is_expected.to compile.with_all_deps }
         it { is_expected.to contain_class('chrony') }
-        it { is_expected.to contain_class('chrony::params') }
-        it { is_expected.to contain_class('chrony::install').that_comes_before('Class[chrony::config]') }
-        it { is_expected.to contain_class('chrony::config').that_notifies('Class[chrony::service]') }
-        it { is_expected.to contain_class('chrony::service') }
+        # it { is_expected.to contain_class('chrony::params') }
+        # it { is_expected.to contain_class('chrony::install').that_comes_before('Class[chrony::config]') }
+        # it { is_expected.to contain_class('chrony::config').that_notifies('Class[chrony::service]') }
+        it { is_expected.to contain_class('chrony::config').that_requires('Class[chrony::package]') }
+        # it { is_expected.to contain_class('chrony::service') }
+        it { is_expected.to contain_class('chrony::service') }.that_subscribes_to('Class[chrony::package]') }
+        it { is_expected.to contain_class('chrony::service') }.that_subscribes_to('Class[chrony::config]') }
       end
 
       context 'chrony::package' do
