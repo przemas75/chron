@@ -91,21 +91,6 @@ describe 'chrony' do
 
         context 'chrony::config' do
           case facts[:osfamily]
-          when 'Ubuntu' and $facts[:operatingsystems] == 'Ubuntu'
-            context 'with some params passed in' do
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*port 123$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdport 257$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^s*allow 192\.168\/16$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*bindcmdaddress 10\.0\.0\.1$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow 1\.2\.3\.4$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmddeny 1\.2\.3$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow all 1\.2$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_mode('0123') }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_owner('steve') }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_group('mrt') }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_replace(true) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
-            end
           when 'Archinux'
             context 'with some params passed in' do
               it { is_expected.to contain_file('/etc/chrony.conf').with_content(%r{^\s*port 123$}) }
@@ -138,19 +123,38 @@ describe 'chrony' do
               it { is_expected.to contain_file('/etc/chrony.keys').with_content("0 sunny\n") }
             end
           when 'Debian'
-            context 'with some params passed in' do
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*port 123$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdport 257$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^s*allow 192\.168\/16$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*bindcmdaddress 10\.0\.0\.1$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow 1\.2\.3\.4$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmddeny 1\.2\.3$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow all 1\.2$}) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_mode('0123') }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_owner('steve') }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_group('mrt') }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_replace(true) }
-              it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
+            case facts[:operatingsystemmajrelease]
+            when 'Debian'
+              context 'with some params passed in' do
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*port 123$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdport 257$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^s*allow 192\.168\/16$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*bindcmdaddress 10\.0\.0\.1$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow 1\.2\.3\.4$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmddeny 1\.2\.3$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow all 1\.2$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_mode('0123') }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_owner('steve') }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_group('mrt') }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_replace(true) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
+              end
+            end
+            when 'Ubuntu'
+              context 'with some params passed in' do
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*port 123$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdport 257$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^s*allow 192\.168\/16$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*bindcmdaddress 10\.0\.0\.1$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow 1\.2\.3\.4$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmddeny 1\.2\.3$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.conf').with_content(%r{^\s*cmdallow all 1\.2$}) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_mode('0123') }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_owner('steve') }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_group('mrt') }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_replace(true) }
+                it { is_expected.to contain_file('/etc/chrony/chrony.keys').with_content("0 sunny\n") }
+              end
             end
           end
         end
