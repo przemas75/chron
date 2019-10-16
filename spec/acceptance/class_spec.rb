@@ -6,7 +6,10 @@ describe 'chrony class:' do
       class { 'chrony': }
     MANIFEST
 
-    idempotent_apply(pp)
+    # idempotent_apply(pp)
+    apply_manifest(pp, catch_failures: true) do |r|
+      expect(r.stderr).not_to eq(%r{error}i)
+    end
   end
 
   describe package('chrony') do
