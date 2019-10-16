@@ -15,8 +15,8 @@ describe 'chrony' do
         # it { is_expected.to contain_class('chrony::config').that_notifies('Class[chrony::service]') }
         it { is_expected.to contain_class('chrony::config').that_requires('Class[chrony::package]') }
         # it { is_expected.to contain_class('chrony::service') }
-        it { is_expected.to contain_class('chrony::service') }.that_subscribes_to('Class[chrony::package]') }
-        it { is_expected.to contain_class('chrony::service') }.that_subscribes_to('Class[chrony::config]') }
+        it { is_expected.to contain_class('chrony::service').that_subscribes_to('Class[chrony::package]') }
+        it { is_expected.to contain_class('chrony::service').that_subscribes_to('Class[chrony::config]') }
       end
 
       context 'chrony::package' do
